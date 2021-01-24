@@ -3,7 +3,7 @@ package domain
 import (
 	"time"
 
-	"github.com/jeansferreira/api-b2w-planetas/helpers"
+	"github.com/yagoazedias/star-wars-planets-api/helpers"
 	"gopkg.in/mgo.v2/bson"
 )
 

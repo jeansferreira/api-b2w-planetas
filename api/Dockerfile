@@ -11,15 +11,16 @@ WORKDIR /go/src/github.com/user/api-b2w-planetas/api
 # RUN go get ./
 # RUN go build
 
-RUN go run api/main.go
+RUN go get github.com/gorilla/mux
 
 CMD if [ ${APP_ENV} = production ]; \
 	then \
 	api; \
 	else \
-	go get github.com/pilu/fresh && \
-	go get github.com/gorilla/mux && \
 	fresh; \
 	fi
+
+RUN go run main.go
+
 	
 EXPOSE 10000
