@@ -12,6 +12,8 @@ WORKDIR /go/src/github.com/user/api-b2w-planetas/api
 # RUN go build
 
 RUN go get github.com/gorilla/mux
+RUN go get gopkg.in/mgo.v2/bson
+RUN go get gopkg.in/mgo.v2
 
 CMD if [ ${APP_ENV} = production ]; \
 	then \

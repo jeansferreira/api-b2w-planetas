@@ -3,7 +3,7 @@ package domain
 import (
 	"time"
 
-	"github.com/yagoazedias/star-wars-planets-api/helpers"
+	"github.com/jeansferreira/star-wars-planets-api/helpers"
 	"gopkg.in/mgo.v2/bson"
 )
 
@@ -30,9 +30,9 @@ type CriarPlaneta struct {
 // https://stackoverflow.com/questions/44873825/how-to-get-timestamp-of-utc-time-with-golang
 func (c *CriarPlaneta) ToBson() bson.M {
 	return bson.M{
-		"name":       c.Name,
-		"weather":    c.Weather,
-		"terrain":    c.Terrain,
+		"nome":       c.Nome,
+		"clima":      c.Clima,
+		"terreno":    c.Terreno,
 		"created_at": time.Now(),
 		"updated_at": time.Now(),
 	}
@@ -40,9 +40,9 @@ func (c *CriarPlaneta) ToBson() bson.M {
 
 func (c *Planeta) ToBson() bson.M {
 	return bson.M{
-		"name":       c.Name,
-		"weather":    c.Weather,
-		"terrain":    c.Terrain,
+		"nome":       c.Nome,
+		"clima":      c.Clima,
+		"terreno":    c.Terreno,
 		"created_at": c.CreatedAt,
 		"updated_at": time.Now(),
 	}
@@ -50,7 +50,7 @@ func (c *Planeta) ToBson() bson.M {
 
 func (c *CriarPlaneta) Me() bson.M {
 	return bson.M{
-		"nome": c.Name,
+		"nome": c.Nome,
 	}
 }
 
