@@ -31,6 +31,11 @@ func returnAllArticles(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(Articles)
 }
 
+func returnAllPlanetas(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Endpoint Hit: returnAllPlanetas")
+	json.NewEncoder(w).Encode(Planeta)
+}
+
 func returnSingleArticle(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	key := vars["id"]
@@ -81,6 +86,10 @@ func handleRequests() {
 	myRouter.HandleFunc("/article/{id}", deleteArticle).Methods("DELETE")
 	fmt.Println("[B2W] - /article/{id}")
 	myRouter.HandleFunc("/article/{id}", returnSingleArticle)
+
+	fmt.Println("[B2W] - /planetas")
+	myRouter.HandleFunc("/planetas", returnAllPlanetas)
+
 	log.Fatal(http.ListenAndServe(":10000", myRouter))
 }
 
@@ -89,6 +98,10 @@ func main() {
 		Article{Id: "1", Title: "Hello", Desc: "Article Description", Content: "Article Content"},
 		Article{Id: "2", Title: "Hello 2", Desc: "Article Description", Content: "Article Content"},
 	}
+	Planetas = []Planeta{
+		Planeta{Id: "1", Nome: "Saturno", Clima: "Winter", Terreno: "Congelado"},
+	}
+
 	handleRequests()
 }
 
